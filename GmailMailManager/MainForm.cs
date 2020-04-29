@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,22 +13,24 @@ namespace GmailMailManager
 {
     public partial class MainForm : Form
     {
+        // That's our custom TextWriter class
+        TextWriter _writer = null;
+
         //Detect Screen Size
         Rectangle screen = Screen.PrimaryScreen.WorkingArea;
         //Storge Drag Status
         bool drag = false;
         //Storage Cursor Start Point         
-        Point start_point = new Point(0, 0);
+        Point start_point = new Point(0, 0);       
+        Size StockSize = new Size(640,500);
         public MainForm()
         {
             InitializeComponent();
 
             //Allow Resize Feature
             this.SetStyle(ControlStyles.ResizeRedraw, true);
-
-            // Resize Form to half screen size
-            Size HalfResolutionSize = new Size(screen.Width / 2, screen.Height / 2);
-            this.Size = HalfResolutionSize;
+            this.Size = StockSize  ;
+        
         }
         //Allow Resize Feature
         private const int cGrip = 16;
@@ -54,7 +57,12 @@ namespace GmailMailManager
         }  // Resize Feature
         private void MainForm_Load(object sender, EventArgs e)
         {
+            // Instantiate the writer
+            _writer = new TextBoxStreamWriter(txtConsole);
+            // Redirect the out Console stream
+            Console.SetOut(_writer);
 
+            
         }
 
         private void Close_Click(object sender, EventArgs e)
@@ -92,7 +100,7 @@ namespace GmailMailManager
         {
             //MouseUp
 
-            Size Half = new Size(screen.Width / 2, screen.Height / 2);
+            Size Half = StockSize;
             Point p = PointToScreen(e.Location);
             //Console.WriteLine(p);
             if (p.Y == 0)        //if cursor location on the top edge
@@ -184,6 +192,157 @@ namespace GmailMailManager
         private void TopPanelLabel_DoubleClick(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.ExitThread();
+        }
+
+        private void GmailAddressLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ProgramDes_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ProgramDes_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GmailAddressTextBox_Enter(object sender, EventArgs e)
+        {
+             if (GmailAddressTextBox.Text == "example@gmail.com")
+            {
+                GmailAddressTextBox.Text = "";
+                GmailAddressTextBox.ForeColor = Color.FromArgb(220, 220, 170);
+            }
+        }
+
+        private void GmailAddressTextBox_Leave(object sender, EventArgs e)
+        {
+            if (GmailAddressTextBox.Text == "" )
+            {
+                GmailAddressTextBox.Text = "example@gmail.com";
+                GmailAddressTextBox.ForeColor = Color.Gray;
+            }
+
+        }
+
+        private void splitter1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void splitter1_SplitterMoved_1(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://console.developers.google.com/apis/credentials/consent");
+        }
+
+        private void Enableapi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fromproject_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Appnametextbox_Enter(object sender, EventArgs e)
+        {
+           if (Appnametextbox.Text == "from created project")
+           {
+                Appnametextbox.Text = "";
+                Appnametextbox.ForeColor = Color.FromArgb(220,220, 170);
+           }
+        }
+
+        private void Appnametextbox_Leave(object sender, EventArgs e)
+        {
+            if (Appnametextbox.Text == "")
+            {
+                Appnametextbox.Text = "from created project";
+                Appnametextbox.ForeColor = Color.Gray;
+            }
+        }
+
+        private void DownloadCredentials_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://console.developers.google.com/apis/credentials");
+        }
+
+        private void credentialslabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GmailAddressLabel_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void About_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void close2_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.ExitThread();
+        }
+
+        private void StartTrash_Click(object sender, EventArgs e)
+        {
+            if (Appnametextbox.Text != "" && Appnametextbox.Text != "from created project")
+            {
+                if (GmailAddressTextBox.Text != "" && GmailAddressTextBox.Text != "example@gmail.com")
+                {
+                    Program.MoveAllMessagesToTrash(Appnametextbox.Text, GmailAddressTextBox.Text);
+                }
+                else
+                {
+                   Console.WriteLine("Application Name or Gmail Address is empty");
+                }
+            }else {
+                   Console.WriteLine("Application Name or Gmail Address is empty"); 
+                  }
+
+           
+        }
+
+        private void ConsoleOutPut_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

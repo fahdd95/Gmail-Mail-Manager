@@ -15,7 +15,7 @@ namespace GmailMailManager
         static void Main()
         {
 
-           // Program.MoveAllMessagesToTrash("fahd95", "fahddaher9995@gmail.com");
+        
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
