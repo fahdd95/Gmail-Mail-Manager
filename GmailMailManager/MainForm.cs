@@ -365,5 +365,17 @@ namespace GmailMailManager
                 Console.WriteLine("Application Name or Gmail Address is empty");
             }
         }
+
+        private void locatecredentials_Click(object sender, EventArgs e)
+        {         
+            DialogResult result = locate.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                string file = locate.FileName;
+                string directoryPath = Path.GetDirectoryName(file);
+                Console.WriteLine(file); // <-- Shows file size in debugging mode.
+            }
+     
+        }
     }
 }

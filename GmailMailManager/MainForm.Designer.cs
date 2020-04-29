@@ -28,14 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.TopPanel = new System.Windows.Forms.Panel();
             this.TopPanelLabel = new System.Windows.Forms.Label();
             this.Minimize = new System.Windows.Forms.Button();
             this.Maximize = new System.Windows.Forms.Button();
             this.Close = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ProgramDes = new System.Windows.Forms.TextBox();
             this.GmailAddressLabel = new System.Windows.Forms.Label();
             this.GmailAddressTextBox = new System.Windows.Forms.TextBox();
@@ -53,6 +50,7 @@
             this.fromproject = new System.Windows.Forms.Label();
             this.How = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.locate = new System.Windows.Forms.OpenFileDialog();
             this.TopPanel.SuspendLayout();
             this.MainPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -128,16 +126,6 @@
             this.Close.TabIndex = 2;
             this.Close.UseVisualStyleBackColor = true;
             this.Close.Click += new System.EventHandler(this.Close_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
             // ProgramDes
             // 
@@ -280,6 +268,7 @@
             this.locatecredentials.TabIndex = 16;
             this.locatecredentials.Text = "3 - Locate Credentials";
             this.locatecredentials.UseVisualStyleBackColor = true;
+            this.locatecredentials.Click += new System.EventHandler(this.locatecredentials_Click);
             // 
             // credentialslabel
             // 
@@ -367,6 +356,11 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // locate
+            // 
+            this.locate.DefaultExt = "json";
+            this.locate.FileName = "Credentials";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,8 +390,6 @@
         private System.Windows.Forms.Button Minimize;
         private System.Windows.Forms.Button Maximize;
         private System.Windows.Forms.Button Close;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.Label TopPanelLabel;
         private System.Windows.Forms.TextBox ProgramDes;
         private System.Windows.Forms.Label GmailAddressLabel;
@@ -416,5 +408,6 @@
         private System.Windows.Forms.Button About;
         private System.Windows.Forms.Button close2;
         private System.Windows.Forms.TextBox txtConsole;
+        private System.Windows.Forms.OpenFileDialog locate;
     }
 }
