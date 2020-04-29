@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -327,6 +328,7 @@ namespace GmailMailManager
             {
                 if (GmailAddressTextBox.Text != "" && GmailAddressTextBox.Text != "example@gmail.com")
                 {
+       
                     Program.MoveAllMessagesToTrash(Appnametextbox.Text, GmailAddressTextBox.Text);
                 }
                 else
@@ -343,6 +345,25 @@ namespace GmailMailManager
         private void ConsoleOutPut_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void untrash_Click(object sender, EventArgs e)
+        {
+            if (Appnametextbox.Text != "" && Appnametextbox.Text != "from created project")
+            {
+                if (GmailAddressTextBox.Text != "" && GmailAddressTextBox.Text != "example@gmail.com")
+                {
+                    Program.UntrashAndUnspamAllMessages(Appnametextbox.Text, GmailAddressTextBox.Text);
+                }
+                else
+                {
+                    Console.WriteLine("Application Name or Gmail Address is empty");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Application Name or Gmail Address is empty");
+            }
         }
     }
 }

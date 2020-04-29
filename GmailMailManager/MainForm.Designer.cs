@@ -40,6 +40,7 @@
             this.GmailAddressLabel = new System.Windows.Forms.Label();
             this.GmailAddressTextBox = new System.Windows.Forms.TextBox();
             this.MainPanel1 = new System.Windows.Forms.Panel();
+            this.txtConsole = new System.Windows.Forms.TextBox();
             this.close2 = new System.Windows.Forms.Button();
             this.About = new System.Windows.Forms.Button();
             this.untrash = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@
             this.fromproject = new System.Windows.Forms.Label();
             this.How = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.txtConsole = new System.Windows.Forms.TextBox();
             this.TopPanel.SuspendLayout();
             this.MainPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -205,6 +205,18 @@
             this.MainPanel1.TabIndex = 5;
             this.MainPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
+            // txtConsole
+            // 
+            this.txtConsole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.txtConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtConsole.ForeColor = System.Drawing.Color.Gray;
+            this.txtConsole.Location = new System.Drawing.Point(6, 335);
+            this.txtConsole.Multiline = true;
+            this.txtConsole.Name = "txtConsole";
+            this.txtConsole.Size = new System.Drawing.Size(441, 132);
+            this.txtConsole.TabIndex = 21;
+            this.txtConsole.TextChanged += new System.EventHandler(this.ConsoleOutPut_TextChanged);
+            // 
             // close2
             // 
             this.close2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -242,6 +254,7 @@
             this.untrash.TabIndex = 18;
             this.untrash.Text = "Move all mails from trash";
             this.untrash.UseVisualStyleBackColor = true;
+            this.untrash.Click += new System.EventHandler(this.untrash_Click);
             // 
             // StartTrash
             // 
@@ -353,18 +366,6 @@
             this.button1.Text = "1 - Create Project";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txtConsole
-            // 
-            this.txtConsole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.txtConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtConsole.ForeColor = System.Drawing.Color.Gray;
-            this.txtConsole.Location = new System.Drawing.Point(6, 335);
-            this.txtConsole.Multiline = true;
-            this.txtConsole.Name = "txtConsole";
-            this.txtConsole.Size = new System.Drawing.Size(441, 132);
-            this.txtConsole.TabIndex = 21;
-            this.txtConsole.TextChanged += new System.EventHandler(this.ConsoleOutPut_TextChanged);
             // 
             // MainForm
             // 
