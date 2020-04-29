@@ -115,7 +115,7 @@ namespace GmailMailManager
                 this.Size = new Size(w, h);
                 this.Location = new Point(screen.Width / 2, 0);
             }
-            else if (this.WindowState == FormWindowState.Maximized && start_point.Y <= 25) //if cursor location on the top edge and the form Maximized
+            else if (this.WindowState == FormWindowState.Maximized && start_point.Y == 0) //if cursor location on the top edge and the form Maximized
             {
                 this.WindowState = FormWindowState.Normal;
                 this.CenterToScreen();
