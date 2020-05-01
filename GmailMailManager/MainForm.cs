@@ -14,9 +14,9 @@ namespace GmailMailManager
 {
     public partial class MainForm : Form
     {
+       
         // That's our custom TextWriter class
         TextWriter _writer = null;
-
         //Detect Screen Size
         Rectangle screen = Screen.PrimaryScreen.WorkingArea;
         //Storge Drag Status
@@ -26,12 +26,13 @@ namespace GmailMailManager
         Size StockSize = new Size(640,500);
         public MainForm()
         {
+           
             InitializeComponent();
-
             //Allow Resize Feature
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.Size = StockSize  ;
-        
+
+
         }
         //Allow Resize Feature
         private const int cGrip = 16;
@@ -324,12 +325,14 @@ namespace GmailMailManager
 
         private void StartTrash_Click(object sender, EventArgs e)
         {
+            bool BtnEnabled = false;
+
             if (Appnametextbox.Text != "" && Appnametextbox.Text != "from created project")
             {
                 if (GmailAddressTextBox.Text != "" && GmailAddressTextBox.Text != "example@gmail.com")
                 {
-       
-                    Program.MoveAllMessagesToTrash(Appnametextbox.Text, GmailAddressTextBox.Text);
+                    Task StartTrash = new Task(() => Program.MoveAllMessagesToTrash(Appnametextbox.Text, GmailAddressTextBox.Text));
+                    StartTrash.Start();
                 }
                 else
                 {
@@ -353,7 +356,9 @@ namespace GmailMailManager
             {
                 if (GmailAddressTextBox.Text != "" && GmailAddressTextBox.Text != "example@gmail.com")
                 {
-                    Program.UntrashAndUnspamAllMessages(Appnametextbox.Text, GmailAddressTextBox.Text);
+
+                    Task StartTrash = new Task(() => Program.UntrashAndUnspamAllMessages(Appnametextbox.Text, GmailAddressTextBox.Text));
+                    StartTrash.Start();
                 }
                 else
                 {
