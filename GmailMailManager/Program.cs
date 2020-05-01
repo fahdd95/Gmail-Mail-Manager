@@ -99,8 +99,10 @@ namespace GmailMailManager
                         if (allmessages == null)
                         {
                             Console.WriteLine("All messages has been deleted");
+                            // TrashCancelManager = new CancellationTokenSource();
                             break;
                         }
+
                         Console.WriteLine(allmessages.Count);
 
 
@@ -255,6 +257,7 @@ namespace GmailMailManager
         public static async void CancelAllTasks()
         {
             TrashCancelManager.Cancel();
+      
         }
 
 
