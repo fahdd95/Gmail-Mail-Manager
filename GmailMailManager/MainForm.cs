@@ -24,6 +24,8 @@ namespace GmailMailManager
         //Storage Cursor Start Point         
         Point start_point = new Point(0, 0);       
         Size StockSize = new Size(640,500);
+
+
         public MainForm()
         {
            
@@ -31,7 +33,7 @@ namespace GmailMailManager
             //Allow Resize Feature
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.Size = StockSize  ;
-
+ 
 
         }
         //Allow Resize Feature
@@ -323,26 +325,25 @@ namespace GmailMailManager
             System.Windows.Forms.Application.ExitThread();
         }
 
-        private void StartTrash_Click(object sender, EventArgs e)
+        private async void StartTrash_Click(object sender, EventArgs e)
         {
-            bool BtnEnabled = false;
-
             if (Appnametextbox.Text != "" && Appnametextbox.Text != "from created project")
             {
                 if (GmailAddressTextBox.Text != "" && GmailAddressTextBox.Text != "example@gmail.com")
                 {
-                    Task StartTrash = new Task(() => Program.MoveAllMessagesToTrash(Appnametextbox.Text, GmailAddressTextBox.Text));
-                    StartTrash.Start();
+                    Program.MoveAllMessagesToTrash(Appnametextbox.Text, GmailAddressTextBox.Text);
+                    StartTrash.Enabled = false;
+                    untrash.Enabled = false;
                 }
                 else
                 {
-                   Console.WriteLine("Application Name or Gmail Address is empty");
+                    Console.WriteLine("Application Name or Gmail Address is empty");
                 }
-            }else {
-                   Console.WriteLine("Application Name or Gmail Address is empty"); 
-                  }
-
-           
+            }
+            else
+            {
+                Console.WriteLine("Application Name or Gmail Address is empty");
+            }
         }
 
         private void ConsoleOutPut_TextChanged(object sender, EventArgs e)
@@ -350,15 +351,16 @@ namespace GmailMailManager
 
         }
 
-        private void untrash_Click(object sender, EventArgs e)
+        private async void untrash_Click(object sender, EventArgs e)
         {
             if (Appnametextbox.Text != "" && Appnametextbox.Text != "from created project")
             {
                 if (GmailAddressTextBox.Text != "" && GmailAddressTextBox.Text != "example@gmail.com")
                 {
+                    Program.UntrashAndUnfspamAllMessages(Appnametextbox.Text,GmailAddressTextBox.Text);
+                    StartTrash.Enabled = false;
+                    untrash.Enabled = false;
 
-                    Task StartTrash = new Task(() => Program.UntrashAndUnspamAllMessages(Appnametextbox.Text, GmailAddressTextBox.Text));
-                    StartTrash.Start();
                 }
                 else
                 {
@@ -381,6 +383,14 @@ namespace GmailMailManager
                 Console.WriteLine(file); // <-- Shows file size in debugging mode.
             }
      
+        }
+
+        private async void CancelBtn_Click(object sender, EventArgs e)
+        {
+            Program.CancelAllTasks();
+            StartTrash.Enabled = true;
+            untrash.Enabled = true;
+
         }
     }
 }

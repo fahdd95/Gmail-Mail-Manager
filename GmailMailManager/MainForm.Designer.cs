@@ -51,6 +51,7 @@
             this.How = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.locate = new System.Windows.Forms.OpenFileDialog();
+            this.CancelBtn = new System.Windows.Forms.Button();
             this.TopPanel.SuspendLayout();
             this.MainPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -170,6 +171,7 @@
             // 
             // MainPanel1
             // 
+            this.MainPanel1.Controls.Add(this.CancelBtn);
             this.MainPanel1.Controls.Add(this.txtConsole);
             this.MainPanel1.Controls.Add(this.close2);
             this.MainPanel1.Controls.Add(this.About);
@@ -236,7 +238,7 @@
             this.untrash.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.untrash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.untrash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.untrash.Location = new System.Drawing.Point(330, 290);
+            this.untrash.Location = new System.Drawing.Point(261, 290);
             this.untrash.Name = "untrash";
             this.untrash.Size = new System.Drawing.Size(231, 23);
             this.untrash.TabIndex = 18;
@@ -249,7 +251,7 @@
             this.StartTrash.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.StartTrash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StartTrash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.StartTrash.Location = new System.Drawing.Point(91, 290);
+            this.StartTrash.Location = new System.Drawing.Point(16, 290);
             this.StartTrash.Name = "StartTrash";
             this.StartTrash.Size = new System.Drawing.Size(231, 23);
             this.StartTrash.TabIndex = 17;
@@ -361,6 +363,19 @@
             this.locate.DefaultExt = "json";
             this.locate.FileName = "Credentials";
             // 
+            // CancelBtn
+            // 
+            this.CancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.CancelBtn.Location = new System.Drawing.Point(518, 290);
+            this.CancelBtn.Name = "CancelBtn";
+            this.CancelBtn.Size = new System.Drawing.Size(102, 23);
+            this.CancelBtn.TabIndex = 22;
+            this.CancelBtn.Text = "Cancel";
+            this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -409,5 +424,6 @@
         private System.Windows.Forms.Button close2;
         private System.Windows.Forms.TextBox txtConsole;
         private System.Windows.Forms.OpenFileDialog locate;
+        private System.Windows.Forms.Button CancelBtn;
     }
 }
