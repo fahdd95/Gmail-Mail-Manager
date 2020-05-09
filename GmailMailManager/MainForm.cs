@@ -30,7 +30,7 @@ namespace GmailMailManager
             //Allow Resize Feature
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.Size = StockSize;
-
+            this.WindowState = FormWindowState.Normal;
 
 
         }
