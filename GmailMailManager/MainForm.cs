@@ -20,6 +20,8 @@ namespace GmailMailManager
         // cilentPath
         String directoryPath;
 
+        //About
+        public AboutForm Aboutme = new AboutForm();
 
         public MainForm()
         {
@@ -28,6 +30,7 @@ namespace GmailMailManager
             //Allow Resize Feature
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.Size = StockSize;
+
 
 
         }
@@ -312,7 +315,7 @@ namespace GmailMailManager
 
         private void About_Click(object sender, EventArgs e)
         {
-
+            Aboutme.ShowDialog();
         }
 
         private void close2_Click(object sender, EventArgs e)
