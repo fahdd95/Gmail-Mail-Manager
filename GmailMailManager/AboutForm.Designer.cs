@@ -33,6 +33,7 @@
             this.TopPanelLabel = new System.Windows.Forms.Label();
             this.Close = new System.Windows.Forms.Button();
             this.close2 = new System.Windows.Forms.Button();
+            this.Sourcecode = new System.Windows.Forms.Button();
             this.TopPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,12 +90,26 @@
             this.close2.UseVisualStyleBackColor = true;
             this.close2.Click += new System.EventHandler(this.close2_Click);
             // 
+            // Sourcecode
+            // 
+            this.Sourcecode.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Sourcecode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Sourcecode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.Sourcecode.Location = new System.Drawing.Point(6, 219);
+            this.Sourcecode.Name = "Sourcecode";
+            this.Sourcecode.Size = new System.Drawing.Size(102, 23);
+            this.Sourcecode.TabIndex = 22;
+            this.Sourcecode.Text = "Sourcecode";
+            this.Sourcecode.UseVisualStyleBackColor = true;
+            this.Sourcecode.Click += new System.EventHandler(this.Sourcecode_Click);
+            // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.ClientSize = new System.Drawing.Size(335, 254);
+            this.Controls.Add(this.Sourcecode);
             this.Controls.Add(this.close2);
             this.Controls.Add(this.TopPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -115,5 +130,6 @@
         private System.Windows.Forms.Label TopPanelLabel;
         private System.Windows.Forms.Button Close;
         private System.Windows.Forms.Button close2;
+        private System.Windows.Forms.Button Sourcecode;
     }
 }
