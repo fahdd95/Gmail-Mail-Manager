@@ -24,6 +24,8 @@ namespace GmailMailManager
         //Storage Cursor Start Point         
         Point start_point = new Point(0, 0);       
         Size StockSize = new Size(640,500);
+        // cilentPath
+        String directoryPath ;
 
 
         public MainForm()
@@ -327,13 +329,20 @@ namespace GmailMailManager
 
         private async void StartTrash_Click(object sender, EventArgs e)
         {
-            if (Appnametextbox.Text != "" && Appnametextbox.Text != "from created project")
+            if (directoryPath != null)
             {
-                if (GmailAddressTextBox.Text != "" && GmailAddressTextBox.Text != "example@gmail.com")
+                if (Appnametextbox.Text != "" && Appnametextbox.Text != "from created project")
                 {
-                    Program.MoveAllMessagesToTrash(Appnametextbox.Text, GmailAddressTextBox.Text);
-                    StartTrash.Enabled = false;
-                    untrash.Enabled = false;
+                    if (GmailAddressTextBox.Text != "" && GmailAddressTextBox.Text != "example@gmail.com")
+                    {
+                        Program.MoveAllMessagesToTrash(Appnametextbox.Text, GmailAddressTextBox.Text, directoryPath);
+                        StartTrash.Enabled = false;
+                        untrash.Enabled = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Application Name or Gmail Address is empty");
+                    }
                 }
                 else
                 {
@@ -342,7 +351,7 @@ namespace GmailMailManager
             }
             else
             {
-                Console.WriteLine("Application Name or Gmail Address is empty");
+                Console.WriteLine("No Credentials File");
             }
         }
 
@@ -353,11 +362,12 @@ namespace GmailMailManager
 
         private async void untrash_Click(object sender, EventArgs e)
         {
-            if (Appnametextbox.Text != "" && Appnametextbox.Text != "from created project")
+            if (directoryPath != null) { 
+                if (Appnametextbox.Text != "" && Appnametextbox.Text != "from created project")
             {
                 if (GmailAddressTextBox.Text != "" && GmailAddressTextBox.Text != "example@gmail.com")
                 {
-                    Program.UntrashAndUnfspamAllMessages(Appnametextbox.Text,GmailAddressTextBox.Text);
+                    Program.UntrashAndUnfspamAllMessages(Appnametextbox.Text,GmailAddressTextBox.Text,directoryPath);
                     StartTrash.Enabled = false;
                     untrash.Enabled = false;
 
@@ -371,6 +381,11 @@ namespace GmailMailManager
             {
                 Console.WriteLine("Application Name or Gmail Address is empty");
             }
+            }
+            else
+            {
+                Console.WriteLine("No Credentials File");
+            }
         }
 
         private void locatecredentials_Click(object sender, EventArgs e)
@@ -379,8 +394,9 @@ namespace GmailMailManager
             if (result == DialogResult.OK) // Test result.
             {
                 string file = locate.FileName;
-                string directoryPath = Path.GetDirectoryName(file);
-                Console.WriteLine(file); // <-- Shows file size in debugging mode.
+                //Path.GetDirectoryName(file) +
+                directoryPath =  file;
+                Console.WriteLine(directoryPath); // <-- Shows file size in debugging mode.
             }
      
         }

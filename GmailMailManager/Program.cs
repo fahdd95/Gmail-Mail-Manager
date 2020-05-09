@@ -32,7 +32,7 @@ namespace GmailMailManager
         //While creating you project at https://console.developers.google.com/apis/credentials/consent make sure this application name matches the Application name
         //as shown in this image http://imgur.com/a/XODky
         //static string ApplicationName = "fahd95";
-        public static async void MoveAllMessagesToTrash(string ApplicationName, string GmailUserId)
+        public static async void MoveAllMessagesToTrash(string ApplicationName, string GmailUserId, string clientfilepath)
         {
             //Cancel Task
             try
@@ -49,7 +49,7 @@ namespace GmailMailManager
 
                     //client_secret.json is from https://console.developers.google.com/apis/dashboard
                     //it is recomended that you replace this file with your own application credentials
-                    using (var stream = new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
+                    using (var stream = new FileStream(clientfilepath, FileMode.Open, FileAccess.Read))
                     {
                         string credPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
                         credPath = Path.Combine(credPath, ".credentials/gmail-dotnet-quickstart.json");
@@ -99,7 +99,7 @@ namespace GmailMailManager
                         if (allmessages == null)
                         {
                             Console.WriteLine("All messages has been deleted");
-                            //TrashCancelManager = new CancellationTokenSource();
+                          //  Program.CancelAllTasks();
                             break;
                         }
 
@@ -148,7 +148,7 @@ namespace GmailMailManager
         }
 
 
-        public static async void UntrashAndUnfspamAllMessages(string ApplicationName, string GmailUserId)
+        public static async void UntrashAndUnfspamAllMessages(string ApplicationName, string GmailUserId, string clientfilepath)
         {
             try
             {
@@ -163,7 +163,7 @@ namespace GmailMailManager
 
             //client_secret.json is from https://console.developers.google.com/apis/dashboard
             //it is recomended that you replace this file with your own application credentials
-            using (var stream = new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream(clientfilepath, FileMode.Open, FileAccess.Read))
             {
                 string credPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
                 credPath = Path.Combine(credPath, ".credentials/gmail-dotnet-quickstart.json");
@@ -213,8 +213,8 @@ namespace GmailMailManager
               
                 if (allmessages == null)
                 {
-                    Console.WriteLine("All messages has been deleted");
-                    //TrashCancelManager = new CancellationTokenSource();
+                    Console.WriteLine("All messages has been recovered");
+                  //  Program.CancelAllTasks();
                     break;
                 }
                 Console.WriteLine(allmessages.Count);
