@@ -1,2 +1,2 @@
 # Gmail-Mail-Manager
-Move all mails to the trash
+Move all mails to trash
