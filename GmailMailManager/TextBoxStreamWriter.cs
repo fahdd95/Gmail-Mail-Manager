@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Text;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace GmailMailManager
@@ -11,7 +11,7 @@ namespace GmailMailManager
 
         public TextBoxStreamWriter(TextBox output)
         {
-            txtConsole = output; 
+            txtConsole = output;
         }
 
         public override void Write(char value)

@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GmailMailManager
 {
     public partial class MainForm : Form
     {
-       
+
         // That's our custom TextWriter class
         TextWriter _writer = null;
         //Detect Screen Size
@@ -22,20 +15,20 @@ namespace GmailMailManager
         //Storge Drag Status
         bool drag = false;
         //Storage Cursor Start Point         
-        Point start_point = new Point(0, 0);       
-        Size StockSize = new Size(640,500);
+        Point start_point = new Point(0, 0);
+        Size StockSize = new Size(640, 500);
         // cilentPath
-        String directoryPath ;
+        String directoryPath;
 
 
         public MainForm()
         {
-           
+
             InitializeComponent();
             //Allow Resize Feature
             this.SetStyle(ControlStyles.ResizeRedraw, true);
-            this.Size = StockSize  ;
- 
+            this.Size = StockSize;
+
 
         }
         //Allow Resize Feature
@@ -68,7 +61,7 @@ namespace GmailMailManager
             // Redirect the out Console stream
             Console.SetOut(_writer);
 
-            
+
         }
 
         private void Close_Click(object sender, EventArgs e)
@@ -237,7 +230,7 @@ namespace GmailMailManager
 
         private void GmailAddressTextBox_Enter(object sender, EventArgs e)
         {
-             if (GmailAddressTextBox.Text == "example@gmail.com")
+            if (GmailAddressTextBox.Text == "example@gmail.com")
             {
                 GmailAddressTextBox.Text = "";
                 GmailAddressTextBox.ForeColor = Color.FromArgb(220, 220, 170);
@@ -246,7 +239,7 @@ namespace GmailMailManager
 
         private void GmailAddressTextBox_Leave(object sender, EventArgs e)
         {
-            if (GmailAddressTextBox.Text == "" )
+            if (GmailAddressTextBox.Text == "")
             {
                 GmailAddressTextBox.Text = "example@gmail.com";
                 GmailAddressTextBox.ForeColor = Color.Gray;
@@ -286,11 +279,11 @@ namespace GmailMailManager
 
         private void Appnametextbox_Enter(object sender, EventArgs e)
         {
-           if (Appnametextbox.Text == "from created project")
-           {
+            if (Appnametextbox.Text == "from created project")
+            {
                 Appnametextbox.Text = "";
-                Appnametextbox.ForeColor = Color.FromArgb(220,220, 170);
-           }
+                Appnametextbox.ForeColor = Color.FromArgb(220, 220, 170);
+            }
         }
 
         private void Appnametextbox_Leave(object sender, EventArgs e)
@@ -362,15 +355,21 @@ namespace GmailMailManager
 
         private async void untrash_Click(object sender, EventArgs e)
         {
-            if (directoryPath != null) { 
-                if (Appnametextbox.Text != "" && Appnametextbox.Text != "from created project")
+            if (directoryPath != null)
             {
-                if (GmailAddressTextBox.Text != "" && GmailAddressTextBox.Text != "example@gmail.com")
+                if (Appnametextbox.Text != "" && Appnametextbox.Text != "from created project")
                 {
-                    Program.UntrashAndUnfspamAllMessages(Appnametextbox.Text,GmailAddressTextBox.Text,directoryPath);
-                    StartTrash.Enabled = false;
-                    untrash.Enabled = false;
+                    if (GmailAddressTextBox.Text != "" && GmailAddressTextBox.Text != "example@gmail.com")
+                    {
+                        Program.UntrashAndUnfspamAllMessages(Appnametextbox.Text, GmailAddressTextBox.Text, directoryPath);
+                        StartTrash.Enabled = false;
+                        untrash.Enabled = false;
 
+                    }
+                    else
+                    {
+                        Console.WriteLine("Application Name or Gmail Address is empty");
+                    }
                 }
                 else
                 {
@@ -379,26 +378,21 @@ namespace GmailMailManager
             }
             else
             {
-                Console.WriteLine("Application Name or Gmail Address is empty");
-            }
-            }
-            else
-            {
                 Console.WriteLine("No Credentials File");
             }
         }
 
         private void locatecredentials_Click(object sender, EventArgs e)
-        {         
+        {
             DialogResult result = locate.ShowDialog(); // Show the dialog.
             if (result == DialogResult.OK) // Test result.
             {
                 string file = locate.FileName;
                 //Path.GetDirectoryName(file) +
-                directoryPath =  file;
+                directoryPath = file;
                 Console.WriteLine(directoryPath); // <-- Shows file size in debugging mode.
             }
-     
+
         }
 
         private async void CancelBtn_Click(object sender, EventArgs e)

@@ -4,10 +4,7 @@ using Google.Apis.Gmail.v1.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,12 +18,12 @@ namespace GmailMailManager
     {
 
         //Task Manager :-)
-       
+
         static CancellationTokenSource TrashCancelManager = new CancellationTokenSource();
-      
+
 
         //Permisions Requested and Aquired by the application
-        static string[] Scopes = { GmailService.Scope.GmailModify};
+        static string[] Scopes = { GmailService.Scope.GmailModify };
 
         //The application works using OAuth.
         //While creating you project at https://console.developers.google.com/apis/credentials/consent make sure this application name matches the Application name
@@ -39,7 +36,7 @@ namespace GmailMailManager
             {
                 await Task.Run(() =>
                 {
-   
+
                     // Call Method 
 
                     //Authentication
@@ -99,7 +96,7 @@ namespace GmailMailManager
                         if (allmessages == null)
                         {
                             Console.WriteLine("All messages has been deleted");
-                          //  Program.CancelAllTasks();
+                            //  Program.CancelAllTasks();
                             break;
                         }
 
@@ -122,7 +119,7 @@ namespace GmailMailManager
 
                                 DeleteReq.Execute();
                                 Console.WriteLine("Request has been executed for message " + message.Id + '\n');
-                              
+
                             }
                             catch
                             {
@@ -144,7 +141,7 @@ namespace GmailMailManager
             }
 
 
-           
+
         }
 
 
@@ -161,88 +158,88 @@ namespace GmailMailManager
 
                     UserCredential credential;
 
-            //client_secret.json is from https://console.developers.google.com/apis/dashboard
-            //it is recomended that you replace this file with your own application credentials
-            using (var stream = new FileStream(clientfilepath, FileMode.Open, FileAccess.Read))
-            {
-                string credPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-                credPath = Path.Combine(credPath, ".credentials/gmail-dotnet-quickstart.json");
-
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.Load(stream).Secrets,
-                    Scopes,
-                    "User",
-                    CancellationToken.None,
-                    new FileDataStore(credPath, true)).Result;
-            }
-
-            #endregion
-
-
-
-            //Starting Service
-            var fahdservice = new GmailService(new BaseClientService.Initializer()
-            {
-                HttpClientInitializer = credential,
-                ApplicationName = ApplicationName,
-            });
-
-            //Infinite Loop
-            for (; ; )
-            {
-                //Loop Breaker :-p
-                if (TrashCancelManager.IsCancellationRequested)
-                TrashCancelManager.Token.ThrowIfCancellationRequested();
-
-
-                //Create a request for a list of (messages / emails)
-                UsersResource.MessagesResource.ListRequest allmessageslistrequest = fahdservice.Users.Messages.List("me");
-
-
-                //Setting up the request
-                allmessageslistrequest.MaxResults = 1000;
-
-                //Include messages from SPAM and TRASH in the results.
-                allmessageslistrequest.IncludeSpamTrash = true;
-
-                //Executing and getting the response
-                var allmessages = allmessageslistrequest.Execute().Messages;
-
-                //Check if response isn't a null
-                //if it is it means the mailbox is empty
-              
-                if (allmessages == null)
-                {
-                    Console.WriteLine("All messages has been recovered");
-                  //  Program.CancelAllTasks();
-                    break;
-                }
-                Console.WriteLine(allmessages.Count);
-
-
-
-                //Add all the message Ids to the deletion request
-                foreach (Message message in allmessages)
-                {
-                    //Loop Breaker :-p
-                    if (TrashCancelManager.IsCancellationRequested)
-                    TrashCancelManager.Token.ThrowIfCancellationRequested();
-         
-                    Console.WriteLine("Working With message " + message.Id);
-                    Console.WriteLine("Creating Untrash Request");
-                    UsersResource.MessagesResource.UntrashRequest UntrashReq = fahdservice.Users.Messages.Untrash(GmailUserId, message.Id);
-                    try
+                    //client_secret.json is from https://console.developers.google.com/apis/dashboard
+                    //it is recomended that you replace this file with your own application credentials
+                    using (var stream = new FileStream(clientfilepath, FileMode.Open, FileAccess.Read))
                     {
-                        UntrashReq.Execute();
-                        Console.WriteLine("Request has been executed for message " + message.Id + '\n');
+                        string credPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                        credPath = Path.Combine(credPath, ".credentials/gmail-dotnet-quickstart.json");
+
+                        credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                            GoogleClientSecrets.Load(stream).Secrets,
+                            Scopes,
+                            "User",
+                            CancellationToken.None,
+                            new FileDataStore(credPath, true)).Result;
                     }
-                    catch
+
+                    #endregion
+
+
+
+                    //Starting Service
+                    var fahdservice = new GmailService(new BaseClientService.Initializer()
                     {
-                        Console.WriteLine("Sorry :-( Somthing Went Wrong");
+                        HttpClientInitializer = credential,
+                        ApplicationName = ApplicationName,
+                    });
+
+                    //Infinite Loop
+                    for (; ; )
+                    {
+                        //Loop Breaker :-p
+                        if (TrashCancelManager.IsCancellationRequested)
+                            TrashCancelManager.Token.ThrowIfCancellationRequested();
+
+
+                        //Create a request for a list of (messages / emails)
+                        UsersResource.MessagesResource.ListRequest allmessageslistrequest = fahdservice.Users.Messages.List("me");
+
+
+                        //Setting up the request
+                        allmessageslistrequest.MaxResults = 1000;
+
+                        //Include messages from SPAM and TRASH in the results.
+                        allmessageslistrequest.IncludeSpamTrash = true;
+
+                        //Executing and getting the response
+                        var allmessages = allmessageslistrequest.Execute().Messages;
+
+                        //Check if response isn't a null
+                        //if it is it means the mailbox is empty
+
+                        if (allmessages == null)
+                        {
+                            Console.WriteLine("All messages has been recovered");
+                            //  Program.CancelAllTasks();
+                            break;
+                        }
+                        Console.WriteLine(allmessages.Count);
+
+
+
+                        //Add all the message Ids to the deletion request
+                        foreach (Message message in allmessages)
+                        {
+                            //Loop Breaker :-p
+                            if (TrashCancelManager.IsCancellationRequested)
+                                TrashCancelManager.Token.ThrowIfCancellationRequested();
+
+                            Console.WriteLine("Working With message " + message.Id);
+                            Console.WriteLine("Creating Untrash Request");
+                            UsersResource.MessagesResource.UntrashRequest UntrashReq = fahdservice.Users.Messages.Untrash(GmailUserId, message.Id);
+                            try
+                            {
+                                UntrashReq.Execute();
+                                Console.WriteLine("Request has been executed for message " + message.Id + '\n');
+                            }
+                            catch
+                            {
+                                Console.WriteLine("Sorry :-( Somthing Went Wrong");
+                            }
+                        }
                     }
-                }
-            }
-                },TrashCancelManager.Token);
+                }, TrashCancelManager.Token);
 
             }
             catch (Exception ex)
@@ -258,14 +255,14 @@ namespace GmailMailManager
         public static async void CancelAllTasks()
         {
             TrashCancelManager.Cancel();
-      
+
         }
 
 
 
     }
 
-  
+
 
 }
 
