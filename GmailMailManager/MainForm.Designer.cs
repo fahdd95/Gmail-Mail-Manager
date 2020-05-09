@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.TopPanel = new System.Windows.Forms.Panel();
             this.TopPanelLabel = new System.Windows.Forms.Label();
             this.Minimize = new System.Windows.Forms.Button();
@@ -37,6 +38,7 @@
             this.GmailAddressLabel = new System.Windows.Forms.Label();
             this.GmailAddressTextBox = new System.Windows.Forms.TextBox();
             this.MainPanel1 = new System.Windows.Forms.Panel();
+            this.CancelBtn = new System.Windows.Forms.Button();
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.close2 = new System.Windows.Forms.Button();
             this.About = new System.Windows.Forms.Button();
@@ -51,7 +53,6 @@
             this.How = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.locate = new System.Windows.Forms.OpenFileDialog();
-            this.CancelBtn = new System.Windows.Forms.Button();
             this.TopPanel.SuspendLayout();
             this.MainPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -194,6 +195,19 @@
             this.MainPanel1.Size = new System.Drawing.Size(640, 475);
             this.MainPanel1.TabIndex = 5;
             this.MainPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
+            // 
+            // CancelBtn
+            // 
+            this.CancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.CancelBtn.Location = new System.Drawing.Point(518, 290);
+            this.CancelBtn.Name = "CancelBtn";
+            this.CancelBtn.Size = new System.Drawing.Size(102, 23);
+            this.CancelBtn.TabIndex = 22;
+            this.CancelBtn.Text = "Cancel";
+            this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // txtConsole
             // 
@@ -363,19 +377,6 @@
             this.locate.DefaultExt = "json";
             this.locate.FileName = "Credentials";
             // 
-            // CancelBtn
-            // 
-            this.CancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.CancelBtn.Location = new System.Drawing.Point(518, 290);
-            this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(102, 23);
-            this.CancelBtn.TabIndex = 22;
-            this.CancelBtn.Text = "Cancel";
-            this.CancelBtn.UseVisualStyleBackColor = true;
-            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,6 +386,7 @@
             this.Controls.Add(this.MainPanel1);
             this.Controls.Add(this.TopPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(640, 350);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
