@@ -17,7 +17,7 @@ namespace GmailMailManager
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm mainForm = new MainForm();
             Application.Run(mainForm);
-        
+
 
         }
     }
