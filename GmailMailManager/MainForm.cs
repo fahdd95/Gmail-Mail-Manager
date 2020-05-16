@@ -334,6 +334,7 @@ namespace GmailMailManager
                         Program.MoveAllMessagesToTrash(Appnametextbox.Text, GmailAddressTextBox.Text, directoryPath);
                         StartTrash.Enabled = false;
                         untrash.Enabled = false;
+                        MoveOnlymessagesfromspecificsender.Enabled = false;
                     }
                     else
                     {
@@ -367,6 +368,7 @@ namespace GmailMailManager
                         Program.UntrashAndUnfspamAllMessages(Appnametextbox.Text, GmailAddressTextBox.Text, directoryPath);
                         StartTrash.Enabled = false;
                         untrash.Enabled = false;
+                        MoveOnlymessagesfromspecificsender.Enabled = false;
 
                     }
                     else
@@ -403,7 +405,60 @@ namespace GmailMailManager
             Program.CancelAllTasks();
             StartTrash.Enabled = true;
             untrash.Enabled = true;
+            MoveOnlymessagesfromspecificsender.Enabled = true;
 
+        }
+
+        private void movelabeledmails_Click(object sender, EventArgs e)
+        {
+            if (directoryPath != null)
+            {
+                if (Appnametextbox.Text != "" && Appnametextbox.Text != "from created project")
+                {
+                    if (GmailAddressTextBox.Text != "" && GmailAddressTextBox.Text != "example@gmail.com")
+                    {
+                        Program.MoveLabeledMessagesToTrash(Appnametextbox.Text, GmailAddressTextBox.Text, directoryPath, senderbox.Text);
+                        StartTrash.Enabled = false;
+                        untrash.Enabled = false;
+                        MoveOnlymessagesfromspecificsender.Enabled = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Application Name or Gmail Address is empty");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Application Name or Gmail Address is empty");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No Credentials File");
+            }
+        }
+
+        private void textBox1_TextChanged_3(object sender, EventArgs e)
+        {
+
+        }
+
+        private void senderbox_Enter(object sender, EventArgs e)
+        {
+            if (senderbox.Text == "Ex Jack")
+            {
+                senderbox.Text = "";
+                senderbox.ForeColor = Color.FromArgb(220, 220, 170);
+            }
+        }
+
+        private void senderbox_Leave(object sender, EventArgs e)
+        {
+            if (senderbox.Text == "")
+            {
+                senderbox.Text = "Ex Jack";
+                senderbox.ForeColor = Color.Gray;
+            }
         }
     }
 }

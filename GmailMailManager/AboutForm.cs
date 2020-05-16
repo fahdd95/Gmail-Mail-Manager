@@ -131,5 +131,10 @@ namespace GmailMailManager
         {
             System.Diagnostics.Process.Start("https://github.com/fahdd95/Gmail-Mail-Manager");
         }
+
+        private void ProgramDes_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

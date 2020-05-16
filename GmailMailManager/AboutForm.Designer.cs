@@ -34,6 +34,7 @@
             this.Close = new System.Windows.Forms.Button();
             this.close2 = new System.Windows.Forms.Button();
             this.Sourcecode = new System.Windows.Forms.Button();
+            this.ProgramDes = new System.Windows.Forms.TextBox();
             this.TopPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,12 +104,29 @@
             this.Sourcecode.UseVisualStyleBackColor = true;
             this.Sourcecode.Click += new System.EventHandler(this.Sourcecode_Click);
             // 
+            // ProgramDes
+            // 
+            this.ProgramDes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.ProgramDes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ProgramDes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.ProgramDes.Location = new System.Drawing.Point(6, 31);
+            this.ProgramDes.Multiline = true;
+            this.ProgramDes.Name = "ProgramDes";
+            this.ProgramDes.ReadOnly = true;
+            this.ProgramDes.Size = new System.Drawing.Size(329, 182);
+            this.ProgramDes.TabIndex = 23;
+            this.ProgramDes.Text = "Gmail Mail Manager is a tiny program allows you using your Gmail address and Gmai" +
+    "l API service to move all your mails to trash after that you can empty your tras" +
+    "h by one click.";
+            this.ProgramDes.TextChanged += new System.EventHandler(this.ProgramDes_TextChanged);
+            // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.ClientSize = new System.Drawing.Size(335, 254);
+            this.Controls.Add(this.ProgramDes);
             this.Controls.Add(this.Sourcecode);
             this.Controls.Add(this.close2);
             this.Controls.Add(this.TopPanel);
@@ -121,6 +139,7 @@
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -131,5 +150,6 @@
         private System.Windows.Forms.Button Close;
         private System.Windows.Forms.Button close2;
         private System.Windows.Forms.Button Sourcecode;
+        private System.Windows.Forms.TextBox ProgramDes;
     }
 }

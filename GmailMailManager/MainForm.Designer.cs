@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.TopPanel = new System.Windows.Forms.Panel();
             this.TopPanelLabel = new System.Windows.Forms.Label();
             this.Minimize = new System.Windows.Forms.Button();
@@ -38,6 +37,7 @@
             this.GmailAddressLabel = new System.Windows.Forms.Label();
             this.GmailAddressTextBox = new System.Windows.Forms.TextBox();
             this.MainPanel1 = new System.Windows.Forms.Panel();
+            this.MoveOnlymessagesfromspecificsender = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.close2 = new System.Windows.Forms.Button();
@@ -53,6 +53,7 @@
             this.How = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.locate = new System.Windows.Forms.OpenFileDialog();
+            this.senderbox = new System.Windows.Forms.TextBox();
             this.TopPanel.SuspendLayout();
             this.MainPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -172,6 +173,8 @@
             // 
             // MainPanel1
             // 
+            this.MainPanel1.Controls.Add(this.senderbox);
+            this.MainPanel1.Controls.Add(this.MoveOnlymessagesfromspecificsender);
             this.MainPanel1.Controls.Add(this.CancelBtn);
             this.MainPanel1.Controls.Add(this.txtConsole);
             this.MainPanel1.Controls.Add(this.close2);
@@ -196,6 +199,19 @@
             this.MainPanel1.TabIndex = 5;
             this.MainPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
+            // MoveOnlymessagesfromspecificsender
+            // 
+            this.MoveOnlymessagesfromspecificsender.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.MoveOnlymessagesfromspecificsender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MoveOnlymessagesfromspecificsender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.MoveOnlymessagesfromspecificsender.Location = new System.Drawing.Point(16, 338);
+            this.MoveOnlymessagesfromspecificsender.Name = "MoveOnlymessagesfromspecificsender";
+            this.MoveOnlymessagesfromspecificsender.Size = new System.Drawing.Size(283, 23);
+            this.MoveOnlymessagesfromspecificsender.TabIndex = 23;
+            this.MoveOnlymessagesfromspecificsender.Text = "Move Only messages from specific sender";
+            this.MoveOnlymessagesfromspecificsender.UseVisualStyleBackColor = true;
+            this.MoveOnlymessagesfromspecificsender.Click += new System.EventHandler(this.movelabeledmails_Click);
+            // 
             // CancelBtn
             // 
             this.CancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -214,10 +230,10 @@
             this.txtConsole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.txtConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConsole.ForeColor = System.Drawing.Color.Gray;
-            this.txtConsole.Location = new System.Drawing.Point(6, 335);
+            this.txtConsole.Location = new System.Drawing.Point(6, 373);
             this.txtConsole.Multiline = true;
             this.txtConsole.Name = "txtConsole";
-            this.txtConsole.Size = new System.Drawing.Size(441, 132);
+            this.txtConsole.Size = new System.Drawing.Size(441, 94);
             this.txtConsole.TabIndex = 21;
             this.txtConsole.TextChanged += new System.EventHandler(this.ConsoleOutPut_TextChanged);
             // 
@@ -377,6 +393,20 @@
             this.locate.DefaultExt = "json";
             this.locate.FileName = "Credentials";
             // 
+            // senderbox
+            // 
+            this.senderbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.senderbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.senderbox.ForeColor = System.Drawing.Color.Gray;
+            this.senderbox.Location = new System.Drawing.Point(307, 339);
+            this.senderbox.Name = "senderbox";
+            this.senderbox.Size = new System.Drawing.Size(140, 20);
+            this.senderbox.TabIndex = 24;
+            this.senderbox.Text = "Ex Jack";
+            this.senderbox.TextChanged += new System.EventHandler(this.textBox1_TextChanged_3);
+            this.senderbox.Enter += new System.EventHandler(this.senderbox_Enter);
+            this.senderbox.Leave += new System.EventHandler(this.senderbox_Leave);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,7 +416,6 @@
             this.Controls.Add(this.MainPanel1);
             this.Controls.Add(this.TopPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(640, 350);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -427,5 +456,7 @@
         private System.Windows.Forms.TextBox txtConsole;
         private System.Windows.Forms.OpenFileDialog locate;
         private System.Windows.Forms.Button CancelBtn;
+        private System.Windows.Forms.Button MoveOnlymessagesfromspecificsender;
+        private System.Windows.Forms.TextBox senderbox;
     }
 }
