@@ -37,6 +37,7 @@
             this.GmailAddressLabel = new System.Windows.Forms.Label();
             this.GmailAddressTextBox = new System.Windows.Forms.TextBox();
             this.MainPanel1 = new System.Windows.Forms.Panel();
+            this.senderbox = new System.Windows.Forms.TextBox();
             this.MoveOnlymessagesfromspecificsender = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.txtConsole = new System.Windows.Forms.TextBox();
@@ -53,9 +54,13 @@
             this.How = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.locate = new System.Windows.Forms.OpenFileDialog();
-            this.senderbox = new System.Windows.Forms.TextBox();
+            this.sidepanel = new System.Windows.Forms.Panel();
+            this.form1 = new System.Windows.Forms.Button();
+            this.form2 = new System.Windows.Forms.Button();
+            this.secpanel = new System.Windows.Forms.Panel();
             this.TopPanel.SuspendLayout();
             this.MainPanel1.SuspendLayout();
+            this.sidepanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -68,7 +73,7 @@
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.TopPanel.Location = new System.Drawing.Point(0, 0);
             this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(640, 25);
+            this.TopPanel.Size = new System.Drawing.Size(735, 25);
             this.TopPanel.TabIndex = 0;
             this.TopPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.TopPanel_Paint);
             this.TopPanel.DoubleClick += new System.EventHandler(this.TopPanel_DoubleClick_1);
@@ -95,7 +100,7 @@
             this.Minimize.Dock = System.Windows.Forms.DockStyle.Right;
             this.Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Minimize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.Minimize.Location = new System.Drawing.Point(535, 0);
+            this.Minimize.Location = new System.Drawing.Point(630, 0);
             this.Minimize.Name = "Minimize";
             this.Minimize.Size = new System.Drawing.Size(35, 25);
             this.Minimize.TabIndex = 3;
@@ -109,7 +114,7 @@
             this.Maximize.Dock = System.Windows.Forms.DockStyle.Right;
             this.Maximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Maximize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.Maximize.Location = new System.Drawing.Point(570, 0);
+            this.Maximize.Location = new System.Drawing.Point(665, 0);
             this.Maximize.Name = "Maximize";
             this.Maximize.Size = new System.Drawing.Size(35, 25);
             this.Maximize.TabIndex = 1;
@@ -123,7 +128,7 @@
             this.Close.Dock = System.Windows.Forms.DockStyle.Right;
             this.Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Close.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.Close.Location = new System.Drawing.Point(605, 0);
+            this.Close.Location = new System.Drawing.Point(700, 0);
             this.Close.Name = "Close";
             this.Close.Size = new System.Drawing.Size(35, 25);
             this.Close.TabIndex = 2;
@@ -173,6 +178,7 @@
             // 
             // MainPanel1
             // 
+            this.MainPanel1.Controls.Add(this.secpanel);
             this.MainPanel1.Controls.Add(this.senderbox);
             this.MainPanel1.Controls.Add(this.MoveOnlymessagesfromspecificsender);
             this.MainPanel1.Controls.Add(this.CancelBtn);
@@ -192,12 +198,25 @@
             this.MainPanel1.Controls.Add(this.GmailAddressTextBox);
             this.MainPanel1.Controls.Add(this.GmailAddressLabel);
             this.MainPanel1.Controls.Add(this.ProgramDes);
-            this.MainPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel1.Location = new System.Drawing.Point(0, 25);
+            this.MainPanel1.Location = new System.Drawing.Point(38, 25);
             this.MainPanel1.Name = "MainPanel1";
-            this.MainPanel1.Size = new System.Drawing.Size(640, 475);
+            this.MainPanel1.Size = new System.Drawing.Size(697, 475);
             this.MainPanel1.TabIndex = 5;
             this.MainPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
+            // 
+            // senderbox
+            // 
+            this.senderbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.senderbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.senderbox.ForeColor = System.Drawing.Color.Gray;
+            this.senderbox.Location = new System.Drawing.Point(307, 339);
+            this.senderbox.Name = "senderbox";
+            this.senderbox.Size = new System.Drawing.Size(140, 20);
+            this.senderbox.TabIndex = 24;
+            this.senderbox.Text = "Ex Jack";
+            this.senderbox.TextChanged += new System.EventHandler(this.textBox1_TextChanged_3);
+            this.senderbox.Enter += new System.EventHandler(this.senderbox_Enter);
+            this.senderbox.Leave += new System.EventHandler(this.senderbox_Leave);
             // 
             // MoveOnlymessagesfromspecificsender
             // 
@@ -393,30 +412,62 @@
             this.locate.DefaultExt = "json";
             this.locate.FileName = "Credentials";
             // 
-            // senderbox
+            // sidepanel
             // 
-            this.senderbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.senderbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.senderbox.ForeColor = System.Drawing.Color.Gray;
-            this.senderbox.Location = new System.Drawing.Point(307, 339);
-            this.senderbox.Name = "senderbox";
-            this.senderbox.Size = new System.Drawing.Size(140, 20);
-            this.senderbox.TabIndex = 24;
-            this.senderbox.Text = "Ex Jack";
-            this.senderbox.TextChanged += new System.EventHandler(this.textBox1_TextChanged_3);
-            this.senderbox.Enter += new System.EventHandler(this.senderbox_Enter);
-            this.senderbox.Leave += new System.EventHandler(this.senderbox_Leave);
+            this.sidepanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.sidepanel.Controls.Add(this.form2);
+            this.sidepanel.Controls.Add(this.form1);
+            this.sidepanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sidepanel.Location = new System.Drawing.Point(0, 25);
+            this.sidepanel.Name = "sidepanel";
+            this.sidepanel.Size = new System.Drawing.Size(38, 475);
+            this.sidepanel.TabIndex = 25;
+            // 
+            // form1
+            // 
+            this.form1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.form1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.form1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.form1.Location = new System.Drawing.Point(0, 3);
+            this.form1.Name = "form1";
+            this.form1.Size = new System.Drawing.Size(38, 29);
+            this.form1.TabIndex = 25;
+            this.form1.Text = "1";
+            this.form1.UseVisualStyleBackColor = true;
+            this.form1.Click += new System.EventHandler(this.form1_Click);
+            // 
+            // form2
+            // 
+            this.form2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.form2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.form2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.form2.Location = new System.Drawing.Point(0, 34);
+            this.form2.Name = "form2";
+            this.form2.Size = new System.Drawing.Size(38, 29);
+            this.form2.TabIndex = 26;
+            this.form2.Text = "2";
+            this.form2.UseVisualStyleBackColor = true;
+            this.form2.Click += new System.EventHandler(this.form2_Click);
+            // 
+            // secpanel
+            // 
+            this.secpanel.Location = new System.Drawing.Point(0, 0);
+            this.secpanel.Name = "secpanel";
+            this.secpanel.Size = new System.Drawing.Size(697, 475);
+            this.secpanel.TabIndex = 25;
+            this.secpanel.Paint += new System.Windows.Forms.PaintEventHandler(this.secpanel_Paint);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.ClientSize = new System.Drawing.Size(640, 500);
+            this.ClientSize = new System.Drawing.Size(735, 500);
+            this.Controls.Add(this.sidepanel);
             this.Controls.Add(this.MainPanel1);
             this.Controls.Add(this.TopPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimumSize = new System.Drawing.Size(640, 350);
+            this.MinimumSize = new System.Drawing.Size(690, 350);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
@@ -426,6 +477,7 @@
             this.TopPanel.PerformLayout();
             this.MainPanel1.ResumeLayout(false);
             this.MainPanel1.PerformLayout();
+            this.sidepanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -458,5 +510,9 @@
         private System.Windows.Forms.Button CancelBtn;
         private System.Windows.Forms.Button MoveOnlymessagesfromspecificsender;
         private System.Windows.Forms.TextBox senderbox;
+        private System.Windows.Forms.Panel sidepanel;
+        private System.Windows.Forms.Button form2;
+        private System.Windows.Forms.Button form1;
+        private System.Windows.Forms.Panel secpanel;
     }
 }

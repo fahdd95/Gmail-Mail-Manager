@@ -16,7 +16,7 @@ namespace GmailMailManager
         bool drag = false;
         //Storage Cursor Start Point         
         Point start_point = new Point(0, 0);
-        Size StockSize = new Size(640, 500);
+        Size StockSize = new Size(690, 500);
         // cilentPath
         String directoryPath;
 
@@ -27,12 +27,14 @@ namespace GmailMailManager
         {
 
             InitializeComponent();
+            //main panel in front
+            secpanel.Hide();
             //Allow Resize Feature
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.Size = StockSize;
             this.WindowState = FormWindowState.Normal;
 
-
+     
         }
         //Allow Resize Feature
         private const int cGrip = 16;
@@ -459,6 +461,22 @@ namespace GmailMailManager
                 senderbox.Text = "Ex Jack";
                 senderbox.ForeColor = Color.Gray;
             }
+        }
+
+        private void form1_Click(object sender, EventArgs e)
+        {
+            secpanel.Hide();
+        }
+
+        private void secpanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void form2_Click(object sender, EventArgs e)
+        {
+          
+            secpanel.Show();
         }
     }
 }
